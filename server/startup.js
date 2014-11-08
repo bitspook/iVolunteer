@@ -13,7 +13,8 @@ Meteor.startup(function() {
         competition: 2014,
         vote_count: Math.floor(Random.fraction()*100),
         email: 'bla'+Math.floor(Random.fraction()*10)+'@bla.com',
-        image: 'http://lorempixel.com/' + Random.choice(['sports', 'food', 'city', 'people', 'cats']) + '/600/400/' ,
+        image: 'http://lorempixel.com/600/400/'+ Random.choice(['sports', 'food', 'city', 'people', 'cats']),
+
         description: (function() {
           var desc = [] ;
           _(100).times(function() {
