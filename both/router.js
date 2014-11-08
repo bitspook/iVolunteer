@@ -63,6 +63,11 @@ Router.route('/logout', function() {
 });
 
 Router.route('/admin', function() {
+  if(!Meteor.user() || !Roles.userIsInRole(Meteor.userId(), ['admin'])) {
+    this.redirect('/login');
+    return;
+  }
+
   this.wait(Meteor.subscribe('nominees'));
 
   if(this.ready()) {
