@@ -50,6 +50,10 @@ background-position: 0 -900px;
 .green {
   color: #99a815;
 }
+.demo-title a {
+  color: #000;
+  text-transform: capitalize;
+}
  </style>
   <div class="container">
 
@@ -57,13 +61,6 @@ background-position: 0 -900px;
 
       <div class="col-sm-3 blog-sidebar">
         <div class="sidebar-module">
-          <!-- <h4>ALL CATEGORIES</h4> -->
-          <!-- <ol class="list-unstyled">
-            <li><a href="/nominees/all">All Nomanies</a></li>
-            <li><a href="/nominees/ngo">NGO</a></li>
-            <li><a href="/nominees/volunteer">Volunteer</a></li>
-            <li><a href="/nominees/corporate">Corporate</a></li>
-          </ol> -->
           <div class="list-group">
   <a class="list-group-item" href="/nominees/all"><i class="fa fa-home fa-fw green"></i>&nbsp; All Nomanies</a>
   <a class="list-group-item" href="/nominees/ngo"><i class="fa fa-book fa-fw green"></i>&nbsp; NGO</a>
@@ -83,7 +80,7 @@ background-position: 0 -900px;
 
                   <div class="wrapper_card">
                     <h2 class="demo-title"><a href="/nominee/{{_id}}">{{first_name}}</a></h2>
-                    <span class="title"><i class="fa fa-heart fa-fw green"></i>&nbsp;{{vote_count}}</span>
+                    <span class="title" id="vote_{{_id}}"><i class="fa fa-heart fa-fw green"></i>&nbsp;{{vote_count}}</span>
                     <span class="title"><i class="fa fa-comments fa-fw green"></i>&nbsp;{{comment_Count}}</span>
                   </div>
               </div>
