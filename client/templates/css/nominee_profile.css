@@ -1,11 +1,12 @@
 .nominee-name-header {
-  text-align: center;
+  text-align: left;
+  text-transform: capitalize;
 }
 
 .nominee-feature-stats {
   min-height: 410px;
-  border: 1px solid #ddd;
   padding: 0;
+  border-radius: 3px;
 }
 
 
@@ -16,4 +17,10 @@
 
 .nominee-counter {
   margin: 9%;
+}
+.bigger-font-1 {
+	font-size: 20px;
+}
+.bigger-font-2 {
+	font-size: 30px;
 }
