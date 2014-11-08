@@ -22,7 +22,7 @@ width: 18% !important;
   font: 400 1.0em/1 "#058edc","League Gothic","Arial Narrow",sans-serif;
   letter-spacing: 2px;
 text-transform: uppercase;
-margin: 5px 0 .15em;
+margin: 5px 0 7px 0;
 }
 .desc {
   height: 20px;
@@ -36,6 +36,15 @@ margin: 5px 0 .15em;
 padding-left: 22px;
 background: url(/images/demobox-icons.png) no-repeat;
 background-position: 0 -850px;
+}
+.comments_bg {
+  margin-right: 8px;
+padding-left: 22px;
+background: url(/images/demobox-icons.png) no-repeat;
+background-position: 0 -900px;
+}
+.wrapper_card {
+  margin-top: 10px;
 }
  </style>
   <nav class="navbar navbar-inverse" role="navigation">
@@ -83,7 +92,8 @@ background-position: 0 -850px;
 
                   <div class="wrapper_card">
                     <h2 class="demo-title"><a href="/nominee/{{_id}}">{{first_name}}</a></h2>
-                    <div class="title likes">{{vote_count}}</div>
+                    <span class="title likes">{{vote_count}}</span>
+                    <span class="title comments_bg">{{comment_Count}}</span>
                   </div>
               </div>
             {{/each}}
