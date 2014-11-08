@@ -4,15 +4,16 @@
 
 .nominee-feature-stats {
   min-height: 410px;
-  border: 1px solid rgba(121,121,121,0.9);
+  border: 1px solid #ddd;
   padding: 0;
 }
 
-.nominee-stat-box {
-
-}
 
 .nominee-stat-box header {
-  height: 30px;
-  background: rgba(174, 192, 28, 0.5);
+  height: 7px;
+  background: rgba(174, 192, 28, 0.9);
+}
+
+.nominee-counter {
+  margin: 9%;
 }
