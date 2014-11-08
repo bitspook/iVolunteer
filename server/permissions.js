@@ -38,6 +38,10 @@ Nominees.allow({
   },
 
   remove: function(userId, doc) {
+    if (userId == doc.owner_id) {
+      return true;
+    }
 
+    return Roles.userIsInRole(userId, ['admin']);
   }
 });
