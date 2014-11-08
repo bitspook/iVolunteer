@@ -21,6 +21,9 @@ Nominees = new Mongo.Collection('nominees');
 Nominee = Model(Nominees);
 
 Nominee.extend({
+  defaultValues: {
+    vote_count: 0
+  },
   updateTotalVoteCount: function() {
     this.vote_count = Counts('total_votes_for_nominee', this._id);
   },
