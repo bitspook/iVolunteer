@@ -27,3 +27,7 @@
 .green {
   color: #99a815 !important;
 }
+
+.vote-nominee {
+  cursor: pointer;
+}
