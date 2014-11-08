@@ -2,11 +2,16 @@
   <style>
     table {
       margin: 0 auto !important;
+      width: 70% !important;
+      float: left;
+    }
+    .container {
     }
 
     .buttons {
       margin-bottom: 20px;
-      float: right;
+      float: left;
+      width: 100%;
     }
   </style>
   <div class="container">
@@ -28,19 +33,21 @@
       </thead>
       <tbody>
         {{#each nominees}}
-          <tr>
+          <tr class="nominee">
             <td>{{type}}</td>
             <td>{{first_name}}</td>
             <td>{{vote_count}}</td>
             <td>{{email}}</td>
             <td>
               <a class="edit" href="/admin/edit/{{_id}}" >edit</a> | 
-              <a class="remove" href="/admin/edit/{{_id}}" >delete</a>
+              <a class="remove" data-id="{{_id}}" href="#" >delete</a>
             </td>
           </tr>
         {{/each}}
       </tbody>
     </table>
+    <div class="chart">
+    </div>
   </div>
 </template>
 
