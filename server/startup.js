@@ -13,6 +13,7 @@ Meteor.startup(function() {
     n1.competition = 2014,
     n1.vote_count = 0,
     n1.email = 'vol1@vol.com',
+    n1.image = 'http://lorempixel.com/600/400/'
     n1.description = (function() {
       var desc = [] ;
       _(100).times(function() {
@@ -30,6 +31,7 @@ Meteor.startup(function() {
     n2.competition = 2014,
     n2.vote_count = 0,
     n2.email = 'ngo@ngo.com',
+    n2.image = 'http://lorempixel.com/600/400/'
     n2.description = (function() {
       var desc = [] ;
       _(100).times(function() {
