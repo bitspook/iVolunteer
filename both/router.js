@@ -15,7 +15,6 @@ Router.route('/nominees/:category', function() {
     var filter = category == 'all' ? {} : {type: category};
 
     var nominees = Nominees.find(filter);
-    console.log("NOMINEES ARE", nominees.fetch());
     this.render('home', {data: {category: category, nominees: nominees}});
   } else
     this.render('loading');
@@ -26,7 +25,7 @@ Router.route('/nominees/:category', function() {
 
 Router.route('/nominee/:id', function() {
   var id = this.params.id;
-  this.wait('nominee', id);
+  this.wait(Meteor.subscribe('nominee', id));
 
   if(this.ready()) {
     var nominee = Nominees.findOne(id);

@@ -23,5 +23,8 @@ Nominee = Model(Nominees);
 Nominee.extend({
   updateTotalVoteCount: function() {
     this.vote_count = Counts('total_votes_for_nominee', this._id);
+  },
+  fullName: function() {
+    return [this.first_name, ' ', this.last_name].join('');
   }
 });
