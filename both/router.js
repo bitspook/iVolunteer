@@ -59,7 +59,7 @@ Router.route('/admin', function() {
   this.wait(Meteor.subscribe('nominees'));
 
   if(this.ready()) {
-    var nominees = Nominees.find({});
+    var nominees = Nominees.find({}, { sort: { vote_count: -1 }});
     console.log('nominees', nominees);
     this.render('AdminDashboard', {data: {nominees: nominees}});
   } else
