@@ -16,7 +16,7 @@ User.extend({
     vote.competition = Competition.current();
     vote.save();
   },
-  unvote: function(nominee_id) {
-    var vote = Votes.remove({nominee_id: nominee_id, user_id: Meteor.userId()});
+  hasAlreadyVoted: function(nomineeId) {
+    return !! Votes.findOne({nominee_id: nomineeId, voter_id: this._id});
   }
 });

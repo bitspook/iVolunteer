@@ -4,6 +4,8 @@ Router.configure({
 
 Router.route('/', function() {
   this.redirect('/nominees/all');
+}, {
+  name: 'home'
 });
 
 Router.route('/nominees/:category', function() {
@@ -41,21 +43,31 @@ Router.route('/add-nominee', function() {
 });
 
 Router.route('/login', function() {
+  var data = {};
+
+  if(this.params.query)
+    data.query = this.params.query;
+
   if(Meteor.user() && Roles.userIsInRole(Meteor.userId(), ['admin']))
-    this.redirect('/admin');
+    this.redirect('/admin', data);
   else
-    if (Meteor.user()) this.redirect('/');
+    if (Meteor.user()) this.redirect('/',data);
   else
-    this.render('login');
+    this.render('login', {data: data});
 });
 
 Router.route('/logout', function() {
   Meteor.logout(function(){
-    this.redirect('/login');
+    this.redirect('/');
   }.bind(this));
 });
 
 Router.route('/admin', function() {
+  if(!Meteor.user() || !Roles.userIsInRole(Meteor.userId(), ['admin'])) {
+    this.redirect('/login');
+    return;
+  }
+
   this.wait(Meteor.subscribe('nominees'));
 
   if(this.ready()) {
@@ -63,9 +75,33 @@ Router.route('/admin', function() {
     this.render('AdminDashboard', {data: {nominees: nominees}});
   } else
     this.render('loading');
+}, {
+  name: 'admin'
 });
 
-Router.route('/admin/edit/:nomineeId', function() {
-  var nomineeId = this.params.nomineeId;
-  this.render('AddNominee', {data: nomineeId});
+Router.route('/new/nominees/:category', function() {
+  var category = this.params.category;
+  if(Meteor.user() || Roles.userIsInRole(Meteor.userId(), ['admin']))
+    this.render(category);
+  else
+    this.redirect('login');
+});
+
+Router.route('/admin/edit/:id', function() {
+  var id = this.params.id;
+  if(Meteor.user() || Roles.userIsInRole(Meteor.userId(), ['admin'])) {
+    this.wait(Meteor.subscribe('nominee', id));
+
+    if(this.ready()) {
+      var nominee = Nominees.findOne(id);
+      nominee.update = true;
+      var category = nominee.type;
+      this.render(category, {data: nominee});
+      // this.render('NomineeProfile', {data: nominee});
+    } else
+      this.render('loading')
+  }
+  else
+    this.redirect('login')
+
 });

@@ -2,6 +2,7 @@
  * Attributes:
  * * first_name                                 String
  * * image                                      url
+ * * owner_id                                   String
  * * last_name                                  String
  * * nominee_slug                               String
  * * type                                       String ['volunteer', 'ngo', 'corporate']
@@ -21,8 +22,15 @@ Nominees = new Mongo.Collection('nominees');
 Nominee = Model(Nominees);
 
 Nominee.extend({
+  defaultValues: {
+    vote_count: 0
+  },
   updateTotalVoteCount: function() {
-    this.vote_count = Counts('total_votes_for_nominee', this._id);
+    if(Meteor.isClient)
+      this.vote_count = Counts.get('total_votes_for_nominee', this._id);
+    if(Meteor.isServer)
+      this.vote_count = Votes.find({nominee_id: this._id}).count();
+    this.save();
   },
   fullName: function() {
     return [this.first_name, ' ', this.last_name].join('');

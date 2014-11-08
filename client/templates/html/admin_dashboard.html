@@ -1,40 +1,46 @@
 <template name="AdminDashboard">
   <style>
-    .collapse {
-      width: 50px;
-      float: right !important;
-    }
-
-    .logout {
-      float: right;
-    }
     table {
       margin: 0 auto !important;
-      width: 700px !important;
+    }
+
+    .buttons {
+      margin-bottom: 20px;
+      float: right;
     }
   </style>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>name</th>
-        <th>votes</th>
-        <th>email</th>
-        <th>update</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each nominees}}
+  <div class="container">
+    <div class="buttons">
+      Create:
+      <a href="/new/nominees/ngo" class="btn btn-warning" role="button">NGO</a>
+      <a href="/new/nominees/corporate" class="btn btn-warning" role="button">Corporate</a>
+      <a href="/new/nominees/volunteer" class="btn btn-warning" role="button">Volunteer</a>
+    </div>
+    <table class="table table-striped">
+      <thead>
         <tr>
-          <td>{{first_name}}</td>
-          <td>{{vote_count}}</td>
-          <td>{{email}}</td>
-          <td>
-            <a class="edit" href="/admin/edit/{{_id}}" >edit</a>
-            <a class="remove" href="/admin/edit/{{_id}}" >delete</a>
-          </td>
+          <th>Type</th>
+          <th>Name</th>
+          <th>Votes</th>
+          <th>Email</th>
+          <th>Update</th>
         </tr>
-      {{/each}}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {{#each nominees}}
+          <tr>
+            <td>{{type}}</td>
+            <td>{{first_name}}</td>
+            <td>{{vote_count}}</td>
+            <td>{{email}}</td>
+            <td>
+              <a class="edit" href="/admin/edit/{{_id}}" >edit</a> | 
+              <a class="remove" href="/admin/edit/{{_id}}" >delete</a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
 </template>
 

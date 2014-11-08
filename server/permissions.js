@@ -5,10 +5,12 @@ Votes.allow({
 
     var previous_vote = Votes.findOne({nominee_id: doc.nominee_id, voter_id: userId});
 
-    var nominee = Nominees.findOne(doc.nominee_id);
-    nominee.updateTotalVoteCount();
+    if(previous_vote) {
+      previous_vote.remove();
+      return false;
+    }
 
-    return ! previous_vote;
+    return true;
   },
   update: function(userId, doc) {
     if( ! Competition.isActive())
@@ -20,5 +22,22 @@ Votes.allow({
 
     nominee.updateTotalVoteCount();
     return doc.voter_id === userId;
+  }
+});
+
+Nominees.allow({
+  insert: function(userId, doc) {
+    return !! Meteor.user();
+  },
+  update: function(userId, doc) {
+    if (userId == doc.owner_id) {
+      return true;
+    }
+
+    return Roles.userIsInRole(userId, ['admin']);
+  },
+
+  remove: function(userId, doc) {
+
   }
 });

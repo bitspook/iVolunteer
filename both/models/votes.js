@@ -9,6 +9,14 @@
 
 Votes = new Mongo.Collection('votes');
 
+var updateOwnersVoteCount = function (userId, doc) {
+  var nominee = Nominees.findOne(doc.nominee_id);
+  nominee.updateTotalVoteCount();
+};
+
+Votes.after.insert(updateOwnersVoteCount);
+Votes.after.remove(updateOwnersVoteCount);
+
 Vote = Model(Votes);
 
 Vote.extend({
