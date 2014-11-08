@@ -1,0 +1,24 @@
+body {
+  background-size: 100%;
+  margin: 0 auto;
+}
+
+.container {
+	width:  500px;
+	vertical-align: middle;
+	margin-top: 100px;
+}
+
+h1 {
+	margin-left: 100px;
+}
+#splash {
+  background: #4a4943;
+  border: 1px solid #3f3c3c;
+  margin: 100px auto;
+  text-align: center;
+  width: 350px;
+}
+#splash h1 {
+  color: #aaa;
+}
