@@ -20,6 +20,9 @@ Router.route('/nominee/:nomineeSlug', function() {
   name: 'nomineeProfile'
 });
 
+Route.route('/add-nominee', function() {
+  this.render('AddNominee');
+});
 
 Router.route('/login', function() {
   if(Meteor.user() && Roles.userIsInRole(Meteor.userId(), ['admin']))
@@ -32,4 +35,9 @@ Router.route('/login', function() {
 
 Router.route('/admin', function() {
   this.render("AdminDashboard");
+});
+
+Router.route('/admin/edit/:nomineeId', function() {
+  var nomineeId = this.params.nomineeId;
+  this.render('AddNominee', {data: nomineeId});
 });
