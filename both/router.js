@@ -20,7 +20,7 @@ Router.route('/nominee/:nomineeSlug', function() {
   name: 'nomineeProfile'
 });
 
-Route.route('/add-nominee', function() {
+Router.route('/add-nominee', function() {
   this.render('AddNominee');
 });
 
