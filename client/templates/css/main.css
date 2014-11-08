@@ -12,6 +12,7 @@
 }
 .logout {
 	color: #fff !important;
+	float: right;
 }
 .navbar {
 	border-radius: 0px !important;
@@ -26,4 +27,9 @@
 }
 .green {
   color: #99a815 !important;
+}
+
+.collapse {
+  width: 50px;
+  float: right !important;
 }
