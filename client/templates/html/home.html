@@ -1,4 +1,43 @@
 <template name="home">
+ <style>
+  .tile {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #333333;
+  box-shadow: 1px 1px 3px #CECECE;
+  margin: 3px;
+  margin-bottom: 20px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+.col-md-4 {
+width: 32.333333% !important;
+}
+.col-sm-3 {
+width: 18% !important;
+}
+.demo-title {
+  font: 400 1.285em/1 "#058edc","League Gothic","Arial Narrow",sans-serif;
+  letter-spacing: 2px;
+text-transform: uppercase;
+margin: 5px 0 .15em;
+}
+.desc {
+  height: 20px;
+  overflow: hidden;
+}
+.title {
+  margin-top: 5px;
+}
+.likes {
+  margin-right: 8px;
+padding-left: 22px;
+background: url(/images/demobox-icons.png) no-repeat;
+background-position: 0 -850px;
+}
+ </style>
   <nav class="navbar navbar-inverse" role="navigation">
     <div class="container">
       <div class="navbar-header">
@@ -26,9 +65,10 @@
         <div class="sidebar-module">
           <h4>ALL CATEGORIES</h4>
           <ol class="list-unstyled">
-            <li><a href="#">NGO</a></li>
-            <li><a href="#">Volunteer</a></li>
-            <li><a href="#">Corporates</a></li>
+            <li><a href="/nominees/all">All Nomanies</a></li>
+            <li><a href="/nominees/ngo">NGO</a></li>
+            <li><a href="/nominees/volunteer">Volunteer</a></li>
+            <li><a href="/nominees/corporates">Corporates</a></li>
           </ol>
         </div>
       </div><!-- /.blog-sidebar -->
@@ -37,11 +77,13 @@
            <div class="row">
             {{#each nominees}}
               <!-- <p>Hi there</p> -->
-              <div class="col-md-4">
+              <div class="col-md-4 tile">
                   <div class="iv_images" style="background-image:url('{{image}}')">
                   </div>
+
                   <div class="wrapper_card">
-                    <div class="title">{{name}}</div>
+                    <h2 class="demo-title"><a href="#">{{first_name}}</a></h2>
+                    <div class="title likes">{{vote_count}}</div>
                   </div>
               </div>
             {{/each}}
