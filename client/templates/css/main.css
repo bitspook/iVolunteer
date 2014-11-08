@@ -24,3 +24,6 @@
 .list-unstyled li a {
 	color: #99a815;
 }
+.green {
+  color: #99a815 !important;
+}
