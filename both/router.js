@@ -18,7 +18,7 @@ Router.route('/nominees/:category', function() {
     console.log("NOMINEES ARE", nominees.fetch());
     this.render('home', {data: {category: category, nominees: nominees}});
   } else
-    this.render('home');
+    this.render('loading');
 
 }, {
   name: 'nominees'
@@ -51,11 +51,20 @@ Router.route('/login', function() {
 });
 
 Router.route('/logout', function() {
-  this.redirect('/login');
+  Meteor.logout(function(){
+    this.redirect('/login');  
+  }.bind(this));
 });
 
 Router.route('/admin', function() {
-  this.render("AdminDashboard");
+  this.wait(Meteor.subscribe('nominees'));
+
+  if(this.ready()) {
+    var nominees = Nominees.find({});
+    console.log('nominees', nominees);
+    this.render('AdminDashboard', {data: {nominees: nominees}});
+  } else
+    this.render('loading');
 });
 
 Router.route('/admin/edit/:nomineeId', function() {
