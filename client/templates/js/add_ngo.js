@@ -14,13 +14,13 @@ Template.ngo.events({
           values.push(currentTarget[i].value);
         }
 
-        ngo.first_name = values[0];
-        ngo.last_name = values[1];
-        ngo.email = values[2];
-        ngo.competition = values[3];
-        ngo.location = values[4];
-        ngo.image = values[5];
-        ngo.description = values[6];
+        ngo.first_name = $('#firstName').val();
+        ngo.last_name = $('#lastName').val();
+        ngo.email = $('#email').val();
+        ngo.competition = $('#competition').val();
+        ngo.location = $("#location").val();
+        ngo.image = $('#image').val();
+        ngo.description = $('textarea#textarea').val();
         ngo.type = 'ngo';
         ngo.owner_id = Meteor.userId();
 
