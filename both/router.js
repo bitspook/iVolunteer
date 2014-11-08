@@ -13,9 +13,15 @@ Router.route('/nominees/:category', function() {
   name: 'nominees'
 });
 
-Router.route('/nominee/:nomineeSlug', function() {
-  var slug = this.params.nomineeSlug;
-  this.render('NomineeProfile', {data: {slug: slug}});
+Router.route('/nominee/:id', function() {
+  var id = this.params.id;
+  this.wait('nominee', id);
+
+  if(this.ready()) {
+    var nominee = Nominees.findOne(id);
+    this.render('NomineeProfile', {data: nominee});
+  } else
+    this.render('loading');
 }, {
   name: 'nomineeProfile'
 });
@@ -31,6 +37,10 @@ Router.route('/login', function() {
     if (Meteor.user()) this.redirect('/');
   else
     this.render('login');
+});
+
+Router.route('/logout', function() {
+  this.redirect('/login');
 });
 
 Router.route('/admin', function() {
