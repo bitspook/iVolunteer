@@ -1,5 +1,105 @@
 <template name="NomineeProfile">
-  <h1>My slug is {{slug}}</h1>
+
+  <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <script type="text/javascript" src="../js/cards.js"> </script>
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Project name</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <div class="blog-header">
+      <h1 class="blog-title">The Bootstrap Blog</h1>
+      <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-3 blog-sidebar">
+
+        <div class="sidebar-module">
+          <h4>MOST COMMON </h4>
+          <ol class="list-unstyled">
+            <li><a href="#">Medical</a></li>
+            <li><a href="#">Volunteer</a></li>
+            <li><a href="#">Emergencies</a></li>
+            <li><a href="#">Education</a></li>
+            <li><a href="#">Memories</a></li>
+            <li><a href="#">Sports</a></li>
+          </ol>
+        </div>
+        <div class="sidebar-module">
+          <h4>ALL CATEGORIES</h4>
+          <ol class="list-unstyled">
+            <li><a href="#">Animal</a></li>
+            <li><a href="#">Business</a></li>
+            <li><a href="#">Charity</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Creative</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Faith</a></li>
+            <li><a href="#">Family</a></li>
+          </ol>
+        </div>
+      </div><!-- /.blog-sidebar -->
+
+      <div class="col-sm-8">
+
+           <div class="row">
+
+
+            {{#each tasks}}
+              <!-- <p>Hi there</p> -->
+            <div class="col-md-4">
+                <div class="iv_images" style="background-image:url('{{url}}')">
+                </div>
+                <div class="wrapper_card">
+                  <div class="title">{{name}}</div>
+                </div>
+            </div>
+            {{/each}}
+
+
+          </div>
+
+        <!-- <nav>
+          <ul class="pager">
+            <li><a href="#">Previous</a></li>
+            <li><a href="#">Next</a></li>
+          </ul>
+        </nav> -->
+
+      </div><!-- /.blog-main -->
+
+
+    </div><!-- /.row -->
+
+  </div><!-- /.container -->
+
+  <div class="blog-footer">
+    <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+    <p>
+      <a href="#">Back to top</a>
+    </p>
+  </div>
+
+
 </template>
-
-
