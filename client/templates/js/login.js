@@ -4,11 +4,12 @@ Template.login.events({
   },
 
   'submit form': function (event, template) {
-    console.log('hello world');
+    event.preventDefault();
     var user = event.currentTarget[0].value;
     var password = event.currentTarget[1].value;
     Meteor.loginWithPassword(user, password, function(err, data) {
-      console.log(err, data);
+      console.log('hello world');
+      // console.log(err, data);
     });
   }
 });
