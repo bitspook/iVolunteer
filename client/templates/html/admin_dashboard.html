@@ -1,17 +1,18 @@
 <template name="AdminDashboard">
   <style>
+    .collapse {
+      width: 50px;
+      float: right !important;
+    }
+
     .logout {
       float: right;
-      margin: 10px 20px 0;
     }
     table {
       margin: 0 auto !important;
       width: 700px !important;
     }
   </style>
-  <div class="logout">
-    <a href="/logout">logout</a>
-  </div>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -22,18 +23,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>name</td>
-        <td>5</td>
-        <td>admin@gmail.com</td>
-        <td><a href="" >edit </a> <a href="" >delete</a></td>
-      </tr>
-      <tr>
-        <td>name</td>
-        <td>5</td>
-        <td>admin@gmail.com</td>
-        <td><a href="" >edit </a> <a href="" >delete</a></td>
-      </tr>
+      {{#each nominees}}
+        <tr>
+          <td>{{first_name}}</td>
+          <td>{{vote_count}}</td>
+          <td>{{email}}</td>
+          <td>
+            <a class="edit" href="/admin/edit/{{_id}}" >edit</a>
+            <a class="remove" href="/admin/edit/{{_id}}" >delete</a>
+          </td>
+        </tr>
+      {{/each}}
     </tbody>
   </table>
 </template>
