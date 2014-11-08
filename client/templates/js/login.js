@@ -8,8 +8,9 @@ Template.login.events({
     var user = event.currentTarget[0].value;
     var password = event.currentTarget[1].value;
     Meteor.loginWithPassword(user, password, function(err, data) {
-      console.log('hello world');
-      // console.log(err, data);
+      if (err) {
+        console.error('error', err);
+      }
     });
   }
 });

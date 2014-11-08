@@ -1,4 +1,40 @@
 <template name="AdminDashboard">
-  <h1>Admin Dashboard</h1>
+  <style>
+    .logout {
+      float: right;
+      margin: 10px 20px 0;
+    }
+    table {
+      margin: 0 auto !important;
+      width: 700px !important;
+    }
+  </style>
+  <div class="logout">
+    <a href="/logout">logout</a>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>votes</th>
+        <th>email</th>
+        <th>update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>name</td>
+        <td>5</td>
+        <td>admin@gmail.com</td>
+        <td><a href="" >edit </a> <a href="" >delete</a></td>
+      </tr>
+      <tr>
+        <td>name</td>
+        <td>5</td>
+        <td>admin@gmail.com</td>
+        <td><a href="" >edit </a> <a href="" >delete</a></td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
