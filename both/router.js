@@ -3,9 +3,25 @@ Router.configure({
 });
 
 Router.route('/', function() {
+  console.log("CAME HOME");
   this.redirect('/nominees/all');
 }, {
   name: 'home'
+});
+
+Router.route('/nominee/:id', function() {
+  console.log("CAME TO PROFILE");
+
+  var id = this.params.id;
+  this.wait(Meteor.subscribe('nominee', id));
+
+  if(this.ready()) {
+    var nominee = Nominees.findOne(id);
+    this.render('NomineeProfile', {data: nominee});
+  } else
+    this.render('loading');
+}, {
+  name: 'nomineeProfile'
 });
 
 Router.route('/nominees/:category', function() {
@@ -25,18 +41,6 @@ Router.route('/nominees/:category', function() {
   name: 'nominees'
 });
 
-Router.route('/nominee/:id', function() {
-  var id = this.params.id;
-  this.wait(Meteor.subscribe('nominee', id));
-
-  if(this.ready()) {
-    var nominee = Nominees.findOne(id);
-    this.render('NomineeProfile', {data: nominee});
-  } else
-    this.render('loading');
-}, {
-  name: 'nomineeProfile'
-});
 
 Router.route('/add-nominee', function() {
   this.render('AddNominee');
@@ -50,8 +54,8 @@ Router.route('/login', function() {
 
   if(Meteor.user() && Roles.userIsInRole(Meteor.userId(), ['admin']))
     this.redirect('/admin', data);
-  else
-    if (Meteor.user()) this.redirect('/',data);
+  else if (Meteor.user() && !data.query.next)
+    this.redirect('/',data);
   else
     this.render('login', {data: data});
 });

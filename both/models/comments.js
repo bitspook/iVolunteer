@@ -11,6 +11,11 @@
 
 Comments = new Mongo.Collection('notice');
 
+Comments.after.insert(function (userId, doc) {
+  doc.created_at = moment().toDate();
+});
+
+
 Comment = Model(Comments);
 
 Comment.extend({
