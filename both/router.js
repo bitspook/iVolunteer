@@ -58,7 +58,7 @@ Router.route('/login', function() {
 
 Router.route('/logout', function() {
   Meteor.logout(function(){
-    this.redirect('/login');
+    this.redirect('/');
   }.bind(this));
 });
 
