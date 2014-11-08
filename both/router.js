@@ -8,7 +8,18 @@ Router.route('/', function() {
 
 Router.route('/nominees/:category', function() {
   var category = this.params.category || 'all';
-  this.render('home', {data: {category: category}});
+
+  this.wait(Meteor.subscribe('nominees'));
+
+  if(this.ready()) {
+    var filter = category == 'all' ? {} : {type: category};
+
+    var nominees = Nominees.find(filter);
+    console.log("NOMINEES ARE", nominees.fetch());
+    this.render('home', {data: {category: category, nominees: nominees}});
+  } else
+    this.render('home');
+
 }, {
   name: 'nominees'
 });

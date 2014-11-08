@@ -1,6 +1,7 @@
 /**
  * Attributes:
  * * first_name                                 String
+ * * image                                      url
  * * last_name                                  String
  * * nominee_slug                               String
  * * type                                       String ['volunteer', 'ngo', 'corporate']
