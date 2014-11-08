@@ -22,5 +22,7 @@ Template.NomineeProfile.events({
     comment.comment = text;
     comment.commenter_name = Meteor.user().fullName();
     comment.save();
+
+    document.getElementById("currComment").value = '';
   }
 });

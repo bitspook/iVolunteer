@@ -3,20 +3,18 @@ Router.configure({
 });
 
 Router.route('/', function() {
-  console.log("CAME HOME");
   this.redirect('/nominees/all');
 }, {
   name: 'home'
 });
 
 Router.route('/nominee/:id', function() {
-  console.log("CAME TO PROFILE");
-
   var id = this.params.id;
   this.wait(Meteor.subscribe('nominee', id));
 
   if(this.ready()) {
     var nominee = Nominees.findOne(id);
+    nominee.comments = Comments.find({nominee_id: id});
     this.render('NomineeProfile', {data: nominee});
   } else
     this.render('loading');
