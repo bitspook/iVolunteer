@@ -2,7 +2,15 @@
   width:230px;
   height:153px;
   background-size:100% 100%;
-  
 }
-
+.navbar-inverse {
+	background-color: #F3AB28 !important;
+	border-color: #F3AB28!important;
+}
+.navbar-inverse .navbar-brand {
+	color: #e12230 !important;
+}
+.logout {
+	color: #fff !important;
+}
 
