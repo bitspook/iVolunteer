@@ -10,8 +10,6 @@ Accounts.onCreateUser(function(options, user) {
 });
 
 Accounts.validateNewUser(function(user) {
-  console.log("USER IS", user);
-
   if(!user.emails) return false;
 
   return true;
