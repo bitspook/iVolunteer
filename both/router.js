@@ -24,7 +24,7 @@ Router.route('/nominees/:category', function() {
   name: 'nominees'
 });
 
-Router.route('/nominee/:id', function() {
+Router.route('/nominees/:id', function() {
   var id = this.params.id;
   console.log("ID IS", id);
   this.wait(Meteor.subscribe('nominee', id));
