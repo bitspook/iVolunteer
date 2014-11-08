@@ -1,5 +1,13 @@
 Template.home.helpers({
-
+  votedClass: function() {
+    //we can subscribe here because templates are reactive
+    Meteor.subscribe('votes_from_user', Meteor.userId());
+    return Meteor.user()
+      ? Meteor.user().hasAlreadyVoted(this._id)
+      ? 'orange'
+      : 'green'
+    : 'green';
+  }
 });
 
 Template.home.events({

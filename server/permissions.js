@@ -5,10 +5,12 @@ Votes.allow({
 
     var previous_vote = Votes.findOne({nominee_id: doc.nominee_id, voter_id: userId});
 
-    var nominee = Nominees.findOne(doc.nominee_id);
-    nominee.updateTotalVoteCount();
+    if(previous_vote) {
+      previous_vote.remove();
+      return false;
+    }
 
-    return ! previous_vote;
+    return true;
   },
   update: function(userId, doc) {
     if( ! Competition.isActive())
