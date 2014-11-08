@@ -2,6 +2,7 @@
  * Attributes:
  * * first_name                                 String
  * * last_name                                  String
+ * * nominee_slug                               String
  * * type                                       String ['volunteer', 'ngo', 'corporate']
  * * competition                                Number (YEAR)
  * * vote_count                                 Number
