@@ -1,0 +1,18 @@
+.nominee-name-header {
+  text-align: center;
+}
+
+.nominee-feature-stats {
+  min-height: 410px;
+  border: 1px solid rgba(121,121,121,0.9);
+  padding: 0;
+}
+
+.nominee-stat-box {
+
+}
+
+.nominee-stat-box header {
+  height: 30px;
+  background: rgba(174, 192, 28, 0.5);
+}
