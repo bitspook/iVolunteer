@@ -6,6 +6,7 @@
  * * commenter_id
  * * comment
  * * created_at
+ * * commenter_name
  */
 
 Comments = new Mongo.Collection('notice');

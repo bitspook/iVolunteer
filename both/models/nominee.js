@@ -26,5 +26,14 @@ Nominee.extend({
   },
   fullName: function() {
     return [this.first_name, ' ', this.last_name].join('');
+  },
+  votingPhoneNumber: function () {
+  	return "(080)78282820";
+  },
+  smsToVote: function () {
+  	return "(+91)8282228267";
+  },
+  websiteURL: function () {
+  	return "www.xyz.com";
   }
 });
