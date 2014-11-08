@@ -4,8 +4,10 @@
   background-size:100% 100%;
 }
 .navbar-inverse {
-	background-color: #F3AB28 !important;
-	border-color: #F3AB28!important;
+	background-color: #fff !important;
+	border-color: #fff;
+	border-top: 7px solid #E22331 !important;
+	box-shadow: 1px 1px 5px #999;
 }
 .navbar-inverse .navbar-brand {
 	color: #e12230 !important;
@@ -20,6 +22,11 @@
 .list-unstyled li {
 	margin-bottom: 5px !important;
 	font-size: 15px;
+}
+
+.navbar-brand {
+	height: 60px !important;
+	padding: 5px !important;
 }
 
 .list-unstyled li a {
@@ -39,4 +46,17 @@
 
 .vote-nominee {
   cursor: pointer;
+}
+
+.container>.navbar-header {
+	margin-bottom: 10px;
+}
+
+.logout {
+	color: #8D8F91 !important;
+}
+.navbar-nav>li>a {
+	font-size: 17px;
+	text-transform: capitalize;
+	line-height: 2.4;
 }
