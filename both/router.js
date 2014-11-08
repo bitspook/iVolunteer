@@ -26,7 +26,8 @@ Router.route('/nominees/:category', function() {
 
 Router.route('/nominee/:id', function() {
   var id = this.params.id;
-  this.wait('nominee', id);
+  console.log("ID IS", id);
+  this.wait(Meteor.subscribe('nominee', id));
 
   if(this.ready()) {
     var nominee = Nominees.findOne(id);
