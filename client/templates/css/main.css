@@ -33,3 +33,7 @@
   width: 50px;
   float: right !important;
 }
+
+.vote-nominee {
+  cursor: pointer;
+}

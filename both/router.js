@@ -4,6 +4,8 @@ Router.configure({
 
 Router.route('/', function() {
   this.redirect('/nominees/all');
+}, {
+  name: 'home'
 });
 
 Router.route('/nominees/:category', function() {
@@ -41,12 +43,17 @@ Router.route('/add-nominee', function() {
 });
 
 Router.route('/login', function() {
+  var data = {};
+
+  if(this.params.query)
+    data.query = this.params.query;
+
   if(Meteor.user() && Roles.userIsInRole(Meteor.userId(), ['admin']))
-    this.redirect('/admin');
+    this.redirect('/admin', data);
   else
-    if (Meteor.user()) this.redirect('/');
+    if (Meteor.user()) this.redirect('/',data);
   else
-    this.render('login');
+    this.render('login', {data: data});
 });
 
 Router.route('/logout', function() {

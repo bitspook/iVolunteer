@@ -19,7 +19,8 @@ Template.ngo.events({
         ngo.email = values[2];
         ngo.competition = values[3];
         ngo.location = values[4];
-        ngo.description = values[5];
+        ngo.image = values[5];
+        ngo.description = values[6];
         ngo.type = 'ngo';
         ngo.owner_id = Meteor.userId();
 

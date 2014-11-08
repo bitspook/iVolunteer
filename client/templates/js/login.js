@@ -1,16 +1,17 @@
 Template.login.events({
-  'click .my-button': function (event, template) {
-    alert("My button was clicked!");
-  },
-
   'submit form': function (event, template) {
+    if(this.query && this.query.next)
+      var next = this.query.next;
+
     event.preventDefault();
     var user = event.currentTarget[0].value;
     var password = event.currentTarget[1].value;
-    Meteor.loginWithPassword(user, password, function(err, data) {
+    Meteor.loginWithPassword(user, password, function(err) {
       if (err) {
-        console.error('error', err);
-      }
+        alert("Couldn't log in: " + err.message);
+        return;
+      } else
+        Router.go(next);
     });
   }
 });

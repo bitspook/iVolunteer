@@ -19,7 +19,8 @@ Template.corporate.events({
         corporate.email = values[2];
         corporate.competition = values[3];
         corporate.location = values[4];
-        corporate.description = values[5];
+        corporate.image = values[5];
+        corporate.description = values[6];
         corporate.type = 'corporate';
         corporate.owner_id = Meteor.userId();
 

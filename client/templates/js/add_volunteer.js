@@ -19,7 +19,8 @@ Template.volunteer.events({
         volunteer.email = values[2];
         volunteer.competition = values[3];
         volunteer.location = values[4];
-        volunteer.description = values[5];
+        volunteer.image = values[5];
+        volunteer.description = values[6];
         volunteer.type = 'volunteer';
         volunteer.owner_id = Meteor.userId();
 
