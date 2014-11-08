@@ -2,11 +2,16 @@
   <style>
     table {
       margin: 0 auto !important;
+      width: 70% !important;
+      float: left;
+    }
+    .container {
     }
 
     .buttons {
       margin-bottom: 20px;
-      float: right;
+      float: left;
+      width: 100%;
     }
   </style>
   <div class="container">
@@ -28,7 +33,7 @@
       </thead>
       <tbody>
         {{#each nominees}}
-          <tr>
+          <tr class="nominee">
             <td>{{type}}</td>
             <td>{{first_name}}</td>
             <td>{{vote_count}}</td>
@@ -41,6 +46,8 @@
         {{/each}}
       </tbody>
     </table>
+    <div class="chart">
+    </div>
   </div>
 </template>
 

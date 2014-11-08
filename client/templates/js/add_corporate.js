@@ -8,7 +8,7 @@ Template.corporate.events({
     'submit form': function(event, Template) {
         event.preventDefault();
         var currentTarget = event.currentTarget;
-        var corporate = this._id ? Nominees.findOne(this._id) : new Nominees();
+        var corporate = this._id ? Nominees.findOne(this._id) : new Nominee();
         var values = [];
         for(var i=0; i < 6; i++) {
           values.push(currentTarget[i].value);
