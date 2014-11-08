@@ -1,7 +1,7 @@
 Meteor.publish('nominees', function(limit) {
-  limit = limit || 30;
+  // limit = limit;
 
-  return Nominees.find({}, {limit: limit});
+  return Nominees.find({});
 });
 
 Meteor.publish("nominee", function(nominee_id) {

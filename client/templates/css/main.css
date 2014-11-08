@@ -12,6 +12,7 @@
 }
 .logout {
 	color: #fff !important;
+	float: right;
 }
 .navbar {
 	border-radius: 0px !important;
@@ -29,6 +30,11 @@
 }
 .orange {
   color: #F3AB28;
+}
+
+.collapse {
+  width: 50px;
+  float: right !important;
 }
 
 .vote-nominee {
