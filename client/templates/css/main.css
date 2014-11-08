@@ -13,4 +13,14 @@
 .logout {
 	color: #fff !important;
 }
+.navbar {
+	border-radius: 0px !important;
+}
+.list-unstyled li {
+	margin-bottom: 5px !important;
+	font-size: 15px;
+}
 
+.list-unstyled li a {
+	color: #99a815;
+}
