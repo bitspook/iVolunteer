@@ -22,7 +22,7 @@
 			sy = ry*Math.sin(startAngle),
 			ex = rx*Math.cos(endAngle),
 			ey = ry*Math.sin(endAngle);
-			
+
 			var ret =[];
 			ret.push("M",sx,h+sy,"A",rx,ry,"0 0 1",ex,h+ey,"L",ex,ey,"A",rx,ry,"0 0 0",sx,sy,"z");
 			return ret.join(" ");
@@ -31,7 +31,7 @@
 	function pieInner(d, rx, ry, h, ir ){
 		var startAngle = (d.startAngle < Math.PI ? Math.PI : d.startAngle);
 		var endAngle = (d.endAngle < Math.PI ? Math.PI : d.endAngle);
-		
+
 		var sx = ir*rx*Math.cos(startAngle),
 			sy = ir*ry*Math.sin(startAngle),
 			ex = ir*rx*Math.cos(endAngle),
@@ -99,8 +99,8 @@
 	
 	Donut3D.draw=function(id, data, x /*center x*/, y/*center y*/, 
 			rx/*radius x*/, ry/*radius y*/, h/*height*/, ir/*inner radius*/){
-	
-		var _data = d3.layout.pie().sort(null).value(function(d) {return d.value;})(data);
+
+		var _data = d3.layout.pie().sort(null).value(function(d) { if (d.value == 0) { return d.value + 1; } return d.value; })(data);
 		
 		var slices = d3.select("#"+id).append("g").attr("transform", "translate(" + x + "," + y + ")")
 			.attr("class", "slices");
