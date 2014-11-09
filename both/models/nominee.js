@@ -71,8 +71,8 @@ Nominee.extend({
     if(Meteor.isClient)
       Session.set('snCount', selectedCount);
 
-    if(selectedCount < 5)
-      this.saveTopVoted();
+    // if(selectedCount < 5)
+    //   this.saveTopVoted();
 
     if(selectedCount > 10 && !this.selected) return false;
 

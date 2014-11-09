@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "casual": {
+      "version": "1.4.6",
+      "dependencies": {
+        "moment": {
+          "version": "2.5.1"
+        },
+        "mersenne-twister": {
+          "version": "1.0.1"
+        }
+      }
+    }
+  }
+}

@@ -2,6 +2,9 @@ Template.AdminDashboard.helpers({
   disableMe: function() {
 
     return Session.get('snCount') >= 10  ? 'disabled' : false;
+  },
+  compIsInSelection: function() {
+    return Competition.isSelection();
   }
 });
 

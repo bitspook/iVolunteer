@@ -50,7 +50,9 @@
           <th>Votes</th>
           <th>Email</th>
           <th>Update</th>
+          <!-- {{#if compIsInSelection}} -->
           <th>Select</th>
+          <!-- {{/if}} -->
         </tr>
       </thead>
       <tbody>
@@ -65,7 +67,9 @@
             <a class="remove" data-id="{{_id}}" href="#" >delete</a>
           </td>
           <td class="select">
+            <!-- {{#if compIsInSelection}} -->
             <input class="selected-nominee" data-id={{_id}} checked={{isSelected}} disabled={{disableMe}} type="checkbox" />
+            <!-- {{/if}} -->
           </td>
         </tr>
         {{/each}}
