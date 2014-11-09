@@ -38,7 +38,8 @@ Template.login.events({
           alert("Couldn't log in: " + err.message);
           return;
         } else
-          Router.go(next);
+          next ? Router.go(next) : Router.go('/');
+
       });
     } else {
       Meteor.loginWithPassword(email, password, function(err) {
@@ -46,7 +47,7 @@ Template.login.events({
           alert("Couldn't log in: " + err.message);
           return;
         } else
-          Router.go(next);
+          next ? Router.go(next) : Router.go('/');
       });
     }
   },

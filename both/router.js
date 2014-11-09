@@ -60,9 +60,9 @@ Router.route('/login', function() {
     data.query = this.params.query;
 
   if(Meteor.user() && Roles.userIsInRole(Meteor.userId(), ['admin']))
-    this.redirect('/admin', data);
+    this.redirect('/admin');
   else if (Meteor.user() && !data.query.next)
-    this.redirect('/',data);
+    this.redirect('/');
   else
     this.render('login', {data: data});
 });
