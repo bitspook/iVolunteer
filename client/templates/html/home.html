@@ -1,85 +1,91 @@
 <template name="home">
- <style>
-  .tile {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  line-height: 18px;
-  font-weight: 400;
-  color: #333333;
-  box-shadow: 1px 1px 3px #CECECE;
-  margin: 3px;
-  margin-bottom: 20px;
-  padding-top: 13px;
-  padding-bottom: 13px;
-}
-.col-md-4 {
-  width: 32.333333% !important;
-}
-.col-sm-3 {
-  width: 18% !important;
-}
-.demo-title {
+  <style>
+    .tile {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #333333;
+    box-shadow: 1px 1px 3px #CECECE;
+    margin: 3px;
+    margin-bottom: 20px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    }
+    .col-md-4 {
+    width: 32.333333% !important;
+    }
+    .col-sm-3 {
+    width: 18% !important;
+    }
+    .demo-title {
 
-  font-size: 16px;
-  font-family: inherit;
-  text-transform: uppercase;
-  margin: 5px 0 7px 0;
-}
-.desc {
-  height: 20px;
-  overflow: hidden;
-}
-.title {
-  margin-top: 5px;
-  margin-right: 12px;
-  cursor: pointer;
-}
-.likes {
-  margin-right: 8px;
-  padding-left: 22px;
-  background: url(/images/demobox-icons.png) no-repeat;
-  background-position: 0 -850px;
-}
-.comments_bg {
-  margin-right: 8px;
-  padding-left: 22px;
-  background: url(/images/demobox-icons.png) no-repeat;
-  background-position: 0 -900px;
-}
-.wrapper_card {
-  margin-top: 10px;
-  text-align: center;
-}
-.demo-title a {
-  color: #000;
-  text-transform: capitalize;
-}
+    font-size: 16px;
+    font-family: inherit;
+    text-transform: uppercase;
+    margin: 5px 0 7px 0;
+    }
+    .desc {
+    height: 20px;
+    overflow: hidden;
+    }
+    .title {
+    margin-top: 5px;
+    margin-right: 12px;
+    cursor: pointer;
+    }
+    .likes {
+    margin-right: 8px;
+    padding-left: 22px;
+    background: url(/images/demobox-icons.png) no-repeat;
+    background-position: 0 -850px;
+    }
+    .comments_bg {
+    margin-right: 8px;
+    padding-left: 22px;
+    background: url(/images/demobox-icons.png) no-repeat;
+    background-position: 0 -900px;
+    }
+    .wrapper_card {
+    margin-top: 10px;
+    text-align: center;
+    }
+    .demo-title a {
+    color: #000;
+    text-transform: capitalize;
+    }
 
- </style>
+  </style>
   <div class="container">
     {{#each notices}}
-      {{> NoticeMessage}}
+    {{> NoticeMessage}}
     {{/each}}
     <div class="row">
 
       <div class="col-sm-3 blog-sidebar">
         <div class="sidebar-module">
+
           <div class="list-group">
             <a class="list-group-item" href="/nominees/all"><i class="fa fa-home fa-fw green"></i>&nbsp; All Nomanies</a>
             <a class="list-group-item" href="/nominees/ngo"><i class="fa fa-book fa-fw green"></i>&nbsp; NGO</a>
             <a class="list-group-item" href="/nominees/volunteer"><i class="fa fa-pencil fa-fw green"></i>&nbsp; Volunteer</a>
             <a class="list-group-item" href="/nominees/corporate"><i class="fa fa-cog fa-fw green"></i>&nbsp; Corporate</a>
           </div>
+          
+          <div class="list-group">
+            <input type="text" class="form-control" placeholder="Search" id="homePageSearch">
+          </div>
+                    
         </div>
       </div><!-- /.blog-sidebar -->
 
       <div class="col-sm-8">
         <div class="row">
-           {{#if isSelection}}
-              <h2 class="heading-title">Top iVolunteer Award Nominees</h2>
-            {{else}}
-             <h2 class="heading-title">iVolunteer Award Nominees</h2>
-           {{/if}}
+          {{#if isSelection}}
+          <h2 class="heading-title">Top iVolunteer Award Nominees</h2>
+          {{else}}
+          <h2 class="heading-title">iVolunteer Award Nominees</h2>
+          {{/if}}
           {{#each nominees}}
           <!-- <p>Hi there</p> -->
           <div class="col-md-4 tile">
