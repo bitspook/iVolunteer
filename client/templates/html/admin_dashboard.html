@@ -50,6 +50,7 @@
           <th>Votes</th>
           <th>Email</th>
           <th>Update</th>
+          <th>Select</th>
         </tr>
       </thead>
       <tbody>
@@ -62,6 +63,11 @@
             <td>
               <a class="edit" href="/admin/edit/{{_id}}" >edit</a> | 
               <a class="remove" data-id="{{_id}}" href="#" >delete</a>
+            </td>
+            <td class="select">
+              {{#if isSelectable}}
+                <input id="isSelected" type="checkbox" />
+              {{/if}}
             </td>
           </tr>
         {{/each}}
