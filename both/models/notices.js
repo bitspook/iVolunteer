@@ -4,9 +4,14 @@
  * * created_at
  * * valid_till
  * * message
+ * * type       ['warning', 'good', 'info']
  */
 
 Notices = new Mongo.Collection('notices');
+
+Comments.before.insert(function (userId, doc) {
+  doc.created_at = moment().toDate();
+});
 
 Notice = Model(Notices);
 

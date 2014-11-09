@@ -19,3 +19,7 @@ Meteor.publish('votes_from_user', function(voterId) {
   var votes = Votes.find({voter_id: voterId});
   return votes;
 });
+
+Meteor.publish('notices', function() {
+  return Notices.find();
+});

@@ -11,7 +11,7 @@
 
 Comments = new Mongo.Collection('comments');
 
-Comments.after.insert(function (userId, doc) {
+Comments.before.insert(function (userId, doc) {
   doc.created_at = moment().toDate();
 });
 

@@ -1,0 +1,10 @@
+<template name="NoticeMessage">
+  <div class="alert {{typeClass}}">
+		<i class="fa-fw fa {{fontClass}}"></i>
+		{{message}}
+
+    {{#if currentUser isAdmin}}
+        <a class="danger pull-right">Delete</a>
+    {{/if}}    
+	</div>
+</template>

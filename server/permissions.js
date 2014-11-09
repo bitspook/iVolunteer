@@ -63,3 +63,16 @@ Comments.allow({
     return (userId == doc.owner_id || Roles.userIsInRole(userId, ['admin']));
   }
 });
+
+Notices.allow({
+  insert: function(userId, doc) {
+    return !! Meteor.user() && Roles.userIsInRole(userId, ['admin']);
+  },
+  update: function(userId, doc) {
+    return !! Meteor.user() && Roles.userIsInRole(userId, ['admin']);
+  },
+
+  remove: function(userId, doc) {
+    return !! Meteor.user() && Roles.userIsInRole(userId, ['admin']);
+  }
+});

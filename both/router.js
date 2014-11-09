@@ -31,7 +31,9 @@ Router.route('/nominees/:category', function() {
     var filter = category == 'all' ? {} : {type: category};
 
     var nominees = Nominees.find(filter);
-    this.render('home', {data: {category: category, nominees: nominees}});
+    var notices = Notices.find();
+
+    this.render('home', {data: {category: category, nominees: nominees, notices: notices}});
   } else
     this.render('loading');
 
