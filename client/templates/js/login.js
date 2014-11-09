@@ -33,6 +33,12 @@ Template.login.events({
       Accounts.createUser({
         email: email,
         password: password
+      }, function(err) {
+        if (err) {
+          alert("Couldn't log in: " + err.message);
+          return;
+        } else
+          Router.go(next);
       });
     } else {
       Meteor.loginWithPassword(email, password, function(err) {

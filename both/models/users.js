@@ -18,5 +18,8 @@ User.extend({
   },
   hasAlreadyVoted: function(nomineeId) {
     return !! Votes.findOne({nominee_id: nomineeId, voter_id: this._id});
+  },
+  isAdmin: function() {
+    return Meteor.user() && Roles.userIsInRole(Meteor.userId(), ['admin']);
   }
 });

@@ -54,7 +54,11 @@
 }
  </style>
   <div class="container">
-
+    
+    {{#each notices}}
+      {{> NoticeMessage}}
+    {{/each}}
+    
     <div class="row">
 
       <div class="col-sm-3 blog-sidebar">
