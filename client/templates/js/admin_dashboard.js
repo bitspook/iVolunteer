@@ -14,6 +14,13 @@ Template.AdminDashboard.events({
     nominee.remove();
   },
 
+  'click .edit': function(event, template) {
+    event.preventDefault();
+    var url = event.target.href.replace(/.*\/\/[^\/]*/, '');
+    // console.log('url', url);
+    Router.go(url);
+  },
+
   'click .nominee': function(event, template) {
     event.preventDefault();
     var id = $(event.currentTarget).data('id');
