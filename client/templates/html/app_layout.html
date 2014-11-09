@@ -13,7 +13,7 @@
         <ul class="nav navbar-nav">
           <li>
             {{#if currentUser.isAdmin}}
-            <a class="logout {{activeRoute '/admin'}}" href="/admin">Dashboard</a>
+              <a class="logout {{activeRoute '/admin'}}" href="/admin">Dashboard</a>
             {{/if}}
           </li>
           <!-- <li class="active"><a href="#">Home</a></li> -->
@@ -21,6 +21,9 @@
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
+          <li>
+            <a class="logout {{activeRoute '/participate'}}" href="/participate">Participate</a>
+          </li>
           <li>
             {{#if currentUser}}
             <a class="logout" href="/logout">Logout</a>

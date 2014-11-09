@@ -26,5 +26,12 @@ Template.ngo.events({
 
         ngo.save();
         Router.go('admin');
+    },
+
+    'change select': function(event, Template) {
+        event.preventDefault();
+
+        var type = $('#type option:selected').val();
+        Router.go('/participate/' + type);
     }
 })

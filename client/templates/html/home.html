@@ -54,6 +54,7 @@
   color: #000;
   text-transform: capitalize;
 }
+
  </style>
   <div class="container">
     {{#each notices}}
@@ -74,6 +75,11 @@
 
       <div class="col-sm-8">
         <div class="row">
+           {{#if isSelection}}
+              <h2 class="heading-title">Top iVolunteer Award Nominees</h2>
+            {{else}}
+             <h2 class="heading-title">iVolunteer Award Nominees</h2>
+           {{/if}}
           {{#each nominees}}
           <!-- <p>Hi there</p> -->
           <div class="col-md-4 tile">

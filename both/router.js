@@ -98,6 +98,23 @@ Router.route('/new/nominees/:category', function() {
     this.redirect('login');
 });
 
+Router.route('/participate', function(){
+  if(! Meteor.user()) {
+    Router.go('login', {}, {query: 'next=/participate'});
+    return;
+  }
+
+  this.redirect('/participate/volunteer');
+})
+
+Router.route('/participate/:category', function() {
+  var category = this.params.category || 'volunteer';
+
+  var templates = {volunteer: 'volunteer', ngo: 'ngo', corporate: 'corporate'};
+
+  this.render(templates[category]);
+});
+
 Router.route('/admin/edit/:id', function() {
   var id = this.params.id;
   if(Meteor.user() || Roles.userIsInRole(Meteor.userId(), ['admin'])) {
