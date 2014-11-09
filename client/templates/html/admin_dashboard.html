@@ -1,37 +1,37 @@
 <template name="AdminDashboard">
   <style>
     table {
-      margin: 0 auto !important;
-      width: 70% !important;
-      float: left;
+    margin: 0 auto !important;
+    width: 70% !important;
+    float: left;
     }
 
     .buttons {
-      margin-bottom: 20px;
-      float: left;
-      width: 100%;
+    margin-bottom: 20px;
+    float: left;
+    width: 100%;
     }
 
     path.slice{
-      stroke-width:2px;
+    stroke-width:2px;
     }
 
     polyline{
-      opacity: .3;
-      stroke: black;
-      stroke-width: 2px;
-      fill: none;
+    opacity: .3;
+    stroke: black;
+    stroke-width: 2px;
+    fill: none;
     }
 
     svg text.percent{
-      fill:white;
-      text-anchor:middle;
-      font-size:12px;
+    fill:white;
+    text-anchor:middle;
+    font-size:12px;
 
     .btn-warning {
-      color: #fff;
-      background-color: #9baa11 !important;
-      border-color: #9baa11 !important;
+    color: #fff;
+    background-color: #9baa11 !important;
+    border-color: #9baa11 !important;
     }
   </style>
   <div class="container">
@@ -50,26 +50,28 @@
           <th>Votes</th>
           <th>Email</th>
           <th>Update</th>
+          <!-- {{#if compIsInSelection}} -->
           <th>Select</th>
+          <!-- {{/if}} -->
         </tr>
       </thead>
       <tbody>
         {{#each nominees}}
-          <tr class="nominee" data-id={{_id}}>
-            <td>{{type}}</td>
-            <td>{{first_name}}</td>
-            <td>{{vote_count}}</td>
-            <td>{{email}}</td>
-            <td>
-              <a class="edit" href="/admin/edit/{{_id}}" >edit</a> | 
-              <a class="remove" data-id="{{_id}}" href="#" >delete</a>
-            </td>
-            <td class="select">
-              {{#if isSelectable}}
-                <input id="isSelected" type="checkbox" />
-              {{/if}}
-            </td>
-          </tr>
+        <tr class="nominee" data-id={{_id}}>
+          <td>{{type}}</td>
+          <td>{{first_name}}</td>
+          <td>{{vote_count}}</td>
+          <td>{{email}}</td>
+          <td>
+            <a class="edit" href="/admin/edit/{{_id}}" >edit</a> | 
+            <a class="remove" data-id="{{_id}}" href="#" >delete</a>
+          </td>
+          <td class="select">
+            <!-- {{#if compIsInSelection}} -->
+            <input class="selected-nominee" data-id={{_id}} checked={{isSelected}} disabled={{disableMe}} type="checkbox" />
+            <!-- {{/if}} -->
+          </td>
+        </tr>
         {{/each}}
       </tbody>
     </table>
