@@ -41,8 +41,11 @@
     }
     .dcomment {
     display: block;
-    padding: 20px;
+    padding: 20px 20px 20px 3px;
     border-bottom: 1px solid #dddddd;
+    }
+    .dcomment:last-child {
+      border-bottom:none;
     }
     .dcomment .dpic {
     float: left;
@@ -123,7 +126,7 @@
       
       <div class="row" id="comments-row">
         <div class="col-md-10 left_bx round5" style="padding-left:0px; padding-right:0px;">
-          <div class="section_head">Comment:</div>
+          <div class="section_head">Comment(s):</div>
           <div style="padding:10px 10px 10px 30px;">
             <div>
               
@@ -133,7 +136,7 @@
                     <textarea type="text" name="comments" id="currComment" class="form-control"></textarea>
                   </div>
                   <div class="col-md-2">
-                    <button type="submit" class="btn btn-large btn-default">Comments</button>
+                    <button type="submit" class="btn btn-large btn-default">Add</button>
                   </div>
                 </div>
               </form>
