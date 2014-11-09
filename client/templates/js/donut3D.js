@@ -48,6 +48,9 @@
 	}
 
 	function getValue(d) {
+		if (isNaN(d.value)) {
+			return 0 + ' ' + d.data.label;
+		}
 		return d.value + ' ' + d.data.label;
 	}
 
@@ -81,51 +84,52 @@
 		  this._current = i(0);
 		  return function(t) { return 0.6*rx*Math.sin(0.5*(i(t).startAngle+i(t).endAngle));  };
 		}
-		
+
 		var _data = d3.layout.pie().sort(null).value(function(d) {return d.value;})(data);
-		
+
 		d3.select("#"+id).selectAll(".innerSlice").data(_data)
-			.transition().duration(750).attrTween("d", arcTweenInner); 
-			
+			.transition().duration(750).attrTween("d", arcTweenInner);
+
 		d3.select("#"+id).selectAll(".topSlice").data(_data)
-			.transition().duration(750).attrTween("d", arcTweenTop); 
-			
+			.transition().duration(750).attrTween("d", arcTweenTop);
+
 		d3.select("#"+id).selectAll(".outerSlice").data(_data)
-			.transition().duration(750).attrTween("d", arcTweenOuter); 	
-			
+			.transition().duration(750).attrTween("d", arcTweenOuter);
+
 		d3.select("#"+id).selectAll(".percent").data(_data).transition().duration(750)
 			.attrTween("x",textTweenX).attrTween("y",textTweenY).text(getPercent); 	
 	}
-	
+
 	Donut3D.draw=function(id, data, x /*center x*/, y/*center y*/, 
 			rx/*radius x*/, ry/*radius y*/, h/*height*/, ir/*inner radius*/){
 
 		var _data = d3.layout.pie().sort(null).value(function(d) { if (d.value == 0) { return d.value + 1; } return d.value; })(data);
-		
+		var _zeroData = d3.layout.pie().sort(null).value(function(d) { return d.value })(data);
+
 		var slices = d3.select("#"+id).append("g").attr("transform", "translate(" + x + "," + y + ")")
 			.attr("class", "slices");
-			
+
 		slices.selectAll(".innerSlice").data(_data).enter().append("path").attr("class", "innerSlice")
 			.style("fill", function(d) { return d3.hsl(d.data.color).darker(0.7); })
 			.attr("d",function(d){ return pieInner(d, rx+0.5,ry+0.5, h, ir);})
 			.each(function(d){this._current=d;});
-		
+
 		slices.selectAll(".topSlice").data(_data).enter().append("path").attr("class", "topSlice")
 			.style("fill", function(d) { return d.data.color; })
 			.style("stroke", function(d) { return d.data.color; })
 			.attr("d",function(d){ return pieTop(d, rx, ry, ir);})
 			.each(function(d){this._current=d;});
-		
+
 		slices.selectAll(".outerSlice").data(_data).enter().append("path").attr("class", "outerSlice")
 			.style("fill", function(d) { return d3.hsl(d.data.color).darker(0.7); })
 			.attr("d",function(d){ return pieOuter(d, rx-.5,ry-.5, h);})
 			.each(function(d){this._current=d;});
 
-		slices.selectAll(".percent").data(_data).enter().append("text").attr("class", "percent")
-			.attr("x",function(d){ return 0.6*rx*Math.cos(0.5*(d.startAngle+d.endAngle));})
-			.attr("y",function(d){ return 0.6*ry*Math.sin(0.5*(d.startAngle+d.endAngle));})
+		slices.selectAll(".percent").data(_zeroData).enter().append("text").attr("class", "percent")
+			.attr("x",function(d){ var x = 0.6*rx*Math.cos(0.5*(d.startAngle+d.endAngle)); if (isNaN(x)) { return 0; } return x; })
+			.attr("y",function(d){ var y = 0.6*ry*Math.sin(0.5*(d.startAngle+d.endAngle)); if (isNaN(y)) { return 0; } return y; })
 			.text(getValue).each(function(d){ this._current=d;});
 	}
-	
+
 	window.Donut3D = Donut3D;
 }();
