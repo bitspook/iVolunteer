@@ -7,6 +7,9 @@ Template.home.helpers({
       ? 'orange'
       : 'green'
     : 'green';
+  },
+  isSelection: function() {
+    return Competition.isSelection();
   }
 });
 
