@@ -72,3 +72,18 @@
  .active {
    color: #E22331 !important;
  }
+
+.heading-title {
+  color: #5E7F08;
+  margin-top: 0px !important;
+  font-size: 20px !important;
+  margin-bottom: 15px !important;
+  border-bottom: 1px dotted #F4AC29;
+  padding-bottom: 5px;
+}
+
+.nominee-name-header {
+	color: #5E7F08;
+  margin-top: 0px !important;
+  font-size: 20px !important;
+}
