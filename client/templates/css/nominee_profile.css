@@ -1,3 +1,7 @@
+.feature {
+  margin-bottom: 30px;
+}
+
 .nominee-name-header {
   text-align: left;
   text-transform: capitalize;
@@ -18,14 +22,29 @@
 .nominee-counter {
   margin: 9%;
 }
+
 .bigger-font-1 {
-	font-size: 20px;
+	font-size: 17px;
 }
 .bigger-font-2 {
-	font-size: 30px;
+	font-size: 28px;
+  font-weight: 500;
 }
 
 .dcomment .dpic {
   padding-top: 5px;
   text-align: center;
+}
+
+.prim-msg {
+  color: rgba(138, 153, 15, 1);
+}
+
+.profile-social-share {
+  text-align: center;
+  word-spacing: 5px;
+}
+
+.profile-stats-group {
+  margin-top: 10%;
 }
