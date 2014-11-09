@@ -35,7 +35,11 @@ Template.NomineeProfile.events({
     document.getElementById("currComment").value = '';
   },
   "click .vote": function() {
-    Meteor.user().vote(this._id);
+    var nominee_id = (Router.current().params["id"]);
+    if (!Meteor.user())
+      Router.go('login',{}, {query: "next=/nominee/" + nominee_id});
+    else
+      Meteor.user().vote(this._id, 'web');
   }
 });
 
