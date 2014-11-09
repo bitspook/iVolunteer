@@ -16,10 +16,10 @@ Template.login.helpers({
 
 Template.login.events({
   'submit form': function (event, template) {
+    event.preventDefault();
     if(this.query && this.query.next)
       var next = this.query.next;
 
-    event.preventDefault();
     var email = event.currentTarget[0].value;
     var password = event.currentTarget[1].value;
     var confirmPassword = event.currentTarget[2] && event.currentTarget[2].value;
