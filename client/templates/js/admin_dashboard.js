@@ -21,32 +21,35 @@ Template.AdminDashboard.events({
     Router.go(url);
   },
 
-  'click .nominee': function(event, template) {
+  'mousedown .nominee': function(event, template) {
     event.preventDefault();
-    var id = $(event.currentTarget).data('id');
 
-    Meteor.subscribe('votes_for_nominee', id);
+    if(event.target.tagName !== 'INPUT') {
+      var id = $(event.currentTarget).data('id');
 
-    var nominee = Nominees.findOne(id);
-    var allVotes = Votes.find({nominee_id: id});
+      Meteor.subscribe('votes_for_nominee', id);
 
-    var votes = {
-      calls: Votes.find({nominee_id: id, source: 'calls'}).count(),
-      sms: Votes.find({nominee_id: id, source: 'sms'}).count(),
-      web: Votes.find({nominee_id: id, source: 'web'}).count()
-    };
+      var nominee = Nominees.findOne(id);
+      var allVotes = Votes.find({nominee_id: id});
 
-    var salesData=[
-      {label:"calls", color:"#3366CC"},
-      {label:"sms", color:"#FF9900"},
-      {label:"web", color:"#DC3912"}
-    ];
+      var votes = {
+        calls: Votes.find({nominee_id: id, source: 'calls'}).count(),
+        sms: Votes.find({nominee_id: id, source: 'sms'}).count(),
+        web: Votes.find({nominee_id: id, source: 'web'}).count()
+      };
 
-    Donut3D.draw("d3-chart", randomData(), 150, 150, 130, 100, 30, 0.4);
-    function randomData(){
-      return salesData.map(function(d){
-        return { label:d.label, value: votes[d.label], color:d.color };
-      });
+      var salesData=[
+        {label:"calls", color:"#3366CC"},
+        {label:"sms", color:"#FF9900"},
+        {label:"web", color:"#DC3912"}
+      ];
+
+      Donut3D.draw("d3-chart", randomData(), 150, 150, 130, 100, 30, 0.4);
+      function randomData(){
+        return salesData.map(function(d){
+          return { label:d.label, value: votes[d.label], color:d.color };
+        });
+      }
     }
   }
 });
