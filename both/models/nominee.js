@@ -45,16 +45,43 @@ Nominee.extend({
   websiteURL: function () {
     return "www.xyz.com";
   },
-  isSelectable: function() {
-    var topVoted = Nominees.find({}, {sort: {vote_count: 5}});
-    // car topIds = _.pluck(topVoted, '_id')
-    console.log('topVoted', topVoted);
-    return true;
-    // return _.contains(top5Ids, this._id);
+  isTopVoted: function() {
+    var topVotedIds = Nominee.topVoted().map(function(doc) {
+      return doc._id;
+    });
+
+    return _.contains(topVotedIds, this._id);
+  },
+  isSelected: function() {
+    var alreadySelectedIds = Nominees.find({selected: true}, {limit: 10}).map(function(doc) {
+      return doc._id;
+    });
+
+    return _.contains(alreadySelectedIds, this._id);
+  },
+  saveTopVoted: function() {
+    Nominee.topVoted().forEach(function(doc) {
+      doc.selected = true;
+      doc.save();
+    });
+  },
+  toggleSelect: function() {
+    var selectedCount = Nominees.find({selected: true}).count();
+
+    if(Meteor.isClient)
+      Session.set('snCount', selectedCount);
+
+    // if(selectedCount < 5)
+    //   this.saveTopVoted();
+
+    if(selectedCount > 10 && !this.selected) return false;
+
+    this.selected = !this.selected;
+    this.save();
   }
 });
 
 Nominee.topVoted = function() {
-  var topVoted = Nominees.find({}, {sort: {vote_count: 5}});
+  var topVoted = Nominees.find({}, {sort: {vote_count: -1}, limit: 5});
   return topVoted;
 };

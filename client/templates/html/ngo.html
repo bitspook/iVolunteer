@@ -1,14 +1,34 @@
 <template name="ngo">
   <style>
-  .content {
-    width:  700px;
-    margin: 0 auto;
-  }
+    .content {
+      width:  700px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin-left: 120px;
+    }
   </style>
 
   <div class="content well">
-      <h3>Add NGO</h3>
+      {{#if currentUser.isAdmin}}
+          <h1>Add NGO</h1>
+        {{else}}
+          <h1>Participate</h1>
+      {{/if}}
       <form class="form-horizontal" role="form">
+        {{#unless currentUser.isAdmin}}
+          <div class="form-group">
+            <label for="type" class="col-sm-2 control-label">Participate As</label>
+            <div class="col-sm-10">
+              <select class="input-large" id='type' name='type'>
+                <option value='ngo'> NGO </option>
+                <option value='volunteer'> Volunteer </option>
+                <option value='corporate'> Corporate </option>
+              </select>
+            </div>
+          </div>
+        {{/unless}}
         <div class="form-group">
           <label for="firstName" class="col-sm-2 control-label">First Name</label>
           <div class="col-sm-10">

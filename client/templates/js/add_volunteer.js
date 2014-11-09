@@ -25,6 +25,14 @@ Template.volunteer.events({
         volunteer.owner_id = Meteor.userId();
 
         volunteer.save();
-        Router.go('admin');
+        Router.go('/nominee/'+ volunteer._id);
+    },
+
+    'change select': function(event, Template) {
+        event.preventDefault();
+
+        var type = $('#type option:selected').val();
+        Router.go('/participate/' + type);
     }
-})
+
+});
