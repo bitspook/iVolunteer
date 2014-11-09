@@ -23,7 +23,7 @@ Template.AdminDashboard.events({
     var nominee = Nominees.findOne(id);
     var allVotes = Votes.find({nominee_id: id});
 
-    var votes =  {
+    var votes = {
       calls: Votes.find({nominee_id: id, source: 'calls'}).count(),
       sms: Votes.find({nominee_id: id, source: 'sms'}).count(),
       web: Votes.find({nominee_id: id, source: 'web'}).count()
