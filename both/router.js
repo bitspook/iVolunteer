@@ -41,8 +41,6 @@ Router.route('/nominees/:category', function() {
       return str.toLowerCase().indexOf(search) < 0;
     });
 
-
-
     var notices = Notices.find();
 
     this.render('home', {data: {category: category, nominees: nominees, notices: notices}});
@@ -93,10 +91,10 @@ Router.route('/admin', function() {
   if(this.ready()) {
     var nominees = Nominees.find({}, { sort: { vote_count: -1 }});
 
-    var search = Session.get("adminSearch");
+    var search = Session.get("adminSearch") ? Session.get("adminSearch") : '';
 
     nominees = _.reject(nominees.fetch(), function(nom) {
-      var str = nom.type;
+      var str = nom.type + ' ' + nom.first_name + ' ' + nom.last_name;
       return str.toLowerCase().indexOf(search) < 0;
     });
 

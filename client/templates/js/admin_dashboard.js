@@ -66,5 +66,9 @@ Template.AdminDashboard.events({
 
     var el = $(event.currentTarget).data('id');
     Nominees.findOne(el).toggleSelect();
+  },
+  'keyup #adminSearch': function() {
+    var query = $("#adminSearch").val().trim();
+    Session.set("adminSearch", query);
   }
 });

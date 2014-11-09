@@ -24,5 +24,9 @@ Template.home.events({
   'click .comment-count':function(e,tmpl) {
       e.preventDefault();
       Router.go('nomineeProfile', {id: this._id}, {query: 'goto=comments-row'})
-   }
+   },
+  'keyup #homePageSearch': function() {
+    var query = document.getElementById("homePageSearch").value.trim();
+    Session.set('homeSearch', query);
+  }
 });
