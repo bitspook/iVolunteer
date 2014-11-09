@@ -39,6 +39,11 @@
     margin-bottom: 30px;
     margin-left: 13px;
     }
+    .dcomment {
+      display: block;
+      padding: 20px;
+      border-bottom: 1px solid #dddddd;
+    }
     .dcomment .dpic {
     float: left;
     width: 65px;
@@ -47,6 +52,11 @@
     margin-right: 15px;
     overflow: hidden;
     background: url(images/fb_empty.jpg);
+    box-shadow: 2px 2px 4px #ccc;
+    }
+    .dcomment .dpic img {
+    float: left;
+    width: 65px;
     }
     .comname {
     font-size: 16px;
@@ -62,7 +72,7 @@
 
     .acomment {
     float: right;
-    width: 473px;
+    width: 90%;
     color: #666;
     font-weight: 300;
     line-height: 23px;
@@ -106,7 +116,7 @@
       <div class="row">
         <div class="col-md-10 left_bx round5" style="padding-left:0px; padding-right:0px;">
           <div class="section_head">Comments:</div>
-          <div style="padding:10px;">
+          <div style="padding:10px 10px 10px 30px;">
             <div>
               
               <form id='comment-form' class="form-horizontal" role="form">
@@ -126,9 +136,9 @@
               {{#each comments}}
               <div class="dcomment singleComment">
                 <div class="dpic">
-                  <img src="/images/profile_pic_1.jpg" style="width:100px; height:100px;">
+                  <img src="/images/guest.png" style="width:100%; height:100%;">
                 </div>
-                <div class="comname">{{commenter_name}} <span class="comname_det"> {{created_at}}</span>
+                <div class="comname">{{commenterName}} <span class="comname_det">{{createdAt}}</span>
                   <div class="acomment mt10">{{comment}}</div>
                   <div style="clear: both;"></div>
                 </div>
