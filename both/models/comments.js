@@ -19,5 +19,10 @@ Comments.before.insert(function (userId, doc) {
 Comment = Model(Comments);
 
 Comment.extend({
-
+  commenterName: function() {
+    return this.commenter_name;
+  },
+  createdAt: function() {
+    return moment(this.created_at).fromNow();
+  }
 });

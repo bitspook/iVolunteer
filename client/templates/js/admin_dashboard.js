@@ -1,45 +1,47 @@
 Template.AdminDashboard.helpers({
-    votes: function() {
-        return {
-            call: 23,
-            web: 98,
-            sms: 124
-        };
-    }
+  // votes: function() {
+  //   Meteor.subscribe('vote_counts_for_nominee', this.id);
+  // }
 });
 
 Template.AdminDashboard.events({
-    'click .remove': function(event, template) {
-        var id = $(event.currentTarget).data('id');
-        var nominee = Nominees.findOne(id);
-        var response = confirm('Are you sure you want to delete "' + nominee.first_name + '" ? This is an irreversible operation.');
-        if (!response) return false;
+  'click .remove': function(event, template) {
+    var id = $(event.currentTarget).data('id');
+    var nominee = Nominees.findOne(id);
+    var response = confirm('Are you sure you want to delete "' + nominee.first_name + '" ? This is an irreversible operation.');
+    if (!response) return false;
 
-        nominee.remove();
-    },
+    nominee.remove();
+  },
 
-    'mouseover .nominee': function(event, template) {
-        event.preventDefault();
+  'click .nominee': function(event, template) {
+    event.preventDefault();
+    var id = $(event.currentTarget).data('id');
 
-        var id = $(event.currentTarget).data('id');
-        var nominee = Nominees.findOne(id);
-        var votes =  {
-            calls: 25,
-            sms: 25,
-            web: 50
-        }
+    Meteor.subscribe('votes_for_nominee', id);
 
-        var salesData=[
-            {label:"calls", color:"#3366CC"},
-            {label:"sms", color:"#FF9900"},
-            {label:"web", color:"#DC3912"}
-        ];
+    var nominee = Nominees.findOne(id);
+    var allVotes = Votes.find({nominee_id: id});
 
-        Donut3D.draw("d3-chart", randomData(), 150, 150, 130, 100, 30, 0.4);
-        function randomData(){
-            return salesData.map(function(d){
-                return { label:d.label, value: votes[d.label], color:d.color };
-            });
-        }
+    var votes =  {
+      calls: Votes.find({nominee_id: id, source: 'calls'}).count(),
+      sms: Votes.find({nominee_id: id, source: 'sms'}).count(),
+      web: Votes.find({nominee_id: id, source: 'web'}).count()
+    };
+
+    console.log("VOTES", votes);
+
+    var salesData=[
+      {label:"calls", color:"#3366CC"},
+      {label:"sms", color:"#FF9900"},
+      {label:"web", color:"#DC3912"}
+    ];
+
+    Donut3D.draw("d3-chart", randomData(), 150, 150, 130, 100, 30, 0.4);
+    function randomData(){
+      return salesData.map(function(d){
+        return { label:d.label, value: votes[d.label], color:d.color };
+      });
     }
-})
+  }
+});

@@ -14,7 +14,8 @@ Router.route('/nominee/:id', function() {
 
   if(this.ready()) {
     var nominee = Nominees.findOne(id);
-    nominee.comments = Comments.find({nominee_id: id});
+
+    nominee.comments = Comments.find({nominee_id: id}, {sort: {created_at: -1}});
     if(this.params.query) nominee.goto = this.params.query;
 
     this.render('NomineeProfile', {data: nominee});
@@ -109,9 +110,9 @@ Router.route('/admin/edit/:id', function() {
       this.render(category, {data: nominee});
       // this.render('NomineeProfile', {data: nominee});
     } else
-      this.render('loading')
+      this.render('loading');
   }
   else
-    this.redirect('login')
+    this.redirect('login');
 
 });

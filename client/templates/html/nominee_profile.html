@@ -40,9 +40,9 @@
     margin-left: 13px;
     }
     .dcomment {
-      display: block;
-      padding: 20px;
-      border-bottom: 1px solid #dddddd;
+    display: block;
+    padding: 20px;
+    border-bottom: 1px solid #dddddd;
     }
     .dcomment .dpic {
     float: left;
@@ -84,16 +84,24 @@
       <h1 class='col-md-8 nominee-name-header'>{{fullName}}</h1>
     </header>
     <section class="feature">
-      <div class="row">
+      <div class="row main-feature">
         <div class="nominee-profile-pic col-md-7">
           <img src="{{image}}" class="img-responsive img-thumbnail" />
         </div>
         <div class="nominee-feature-stats col-md-3">
-          <div class="list-group">
-            <div class="list-group-item"><span class="bigger-font-1">Total Votes:</span> <span class="bigger-font-2">{{vote_count}}</span></div>
-            <div class="list-group-item"><span class="bigger-font-1">Call To Vote:</span> <span class="bigger-font-2">{{votingPhoneNumber}}</span></div>
-            <div class="list-group-item"><span class="bigger-font-1">Sms To Vote:</span> <span class="bigger-font-2">{{smsToVote}}</span></div>
-            <div class="list-group-item"><a class="social-icons" href="https://www.facebook.com/sharer/sharer.php?u=http://ivolunteer.in" twitter="Facebook" target="_blank"><i class="fa fa-facebook fa-3x green"></i></a>
+          <div class="list-group profile-stats-group">
+            <div class="list-group-item" style="text-align: center"><span class="bigger-font-2" style="padding-right:5px;">{{vote_count}}</span> <span class="bigger-font-1">total votes</span></div>
+            <div class="list-group-item">
+              <span class="small sec-msg">Miss Call at</span>
+              <span class="bigger-font-2 prim-msg">{{votingPhoneNumber}}</span>
+            </div>
+            <div class="list-group-item">
+              <span class="bigger-font-1 sec-msg">Sms</span>
+              <span class="bigger-font-2 prim-msg">VPHCS</span>
+              <span class="bigger-font-1 sec-msg">to</span>
+              <span class="bigger-font-2 prim-msg">556064</span>
+            </div>
+            <div class="list-group-item profile-social-share"><a class="social-icons" href="https://www.facebook.com/sharer/sharer.php?u=http://ivolunteer.in" twitter="Facebook" target="_blank"><i class="fa fa-facebook fa-3x green"></i></a>
 
               <a class="social-icons" href="https://twitter.com/intent/tweet?text={{_id}};url=http://www.ivolunteer.in/&amp;via=ivolunteer&amp;#ivolunteer" title="Twitter" target="_blank"><i class="fa fa-twitter fa-3x green"></i></a>
               
@@ -101,7 +109,7 @@
 
               <a href="https://pinterest.com/pin/create/button/?description=Celebvidy - Celebrity shout-out videos, on demand&amp;url=http://ivolunteer.com&amp;media=" title="Pinterest" target="_blank"><i class="fa fa-pinterest fa-3x green"></i></a>
             </div>
-            <button type="button" class="btn btn-danger">Vote Me</button>
+            <button type="button" class="vote col-md-12 btn {{votedClass}}">Vote Me</button>
           </div>
         </div>
       </div>
@@ -137,7 +145,7 @@
               {{#each comments}}
               <div class="dcomment singleComment">
                 <div class="dpic">
-                  <img src="/images/guest.png" style="width:100%; height:100%;">
+                  <i class="fa fa-user fa-4x"></i>
                 </div>
                 <div class="comname">{{commenterName}} <span class="comname_det">{{createdAt}}</span>
                   <div class="acomment mt10">{{comment}}</div>

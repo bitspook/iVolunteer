@@ -36,12 +36,12 @@ Nominee.extend({
     return [this.first_name, ' ', this.last_name].join('');
   },
   votingPhoneNumber: function () {
-  	return "(080)78282820";
+    return "09847347126";
   },
   smsToVote: function () {
-  	return "(+91)8282228267";
+    return "(+91)8282228267";
   },
   websiteURL: function () {
-  	return "www.xyz.com";
+    return "www.xyz.com";
   }
 });
