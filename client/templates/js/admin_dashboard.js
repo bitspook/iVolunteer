@@ -29,8 +29,6 @@ Template.AdminDashboard.events({
       web: Votes.find({nominee_id: id, source: 'web'}).count()
     };
 
-    console.log("VOTES", votes);
-
     var salesData=[
       {label:"calls", color:"#3366CC"},
       {label:"sms", color:"#FF9900"},
