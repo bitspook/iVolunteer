@@ -17,5 +17,9 @@ Template.home.events({
       Router.go('login',{}, {query: "next=home"});
     else
       Meteor.user().vote(this._id, 'web');
-  }
+  },
+  'click .comment-count':function(e,tmpl) {
+      e.preventDefault();
+      Router.go('nomineeProfile', {id: this._id}, {query: 'goto=comments-row'})
+   }
 });

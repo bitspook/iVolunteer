@@ -1,0 +1,35 @@
+<template name="AddNotice">
+  <style>
+  .content {
+    width:  700px;
+    margin: 0 auto;
+  }
+  </style>
+
+  <div class="content well">
+      <h3>Add Notice</h3>
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="noticeType" class="col-sm-2 control-label">Type</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="noticeType" name="noticeType">
+              <option value="warning">Warning</option>
+              <option value="good">Good</option>
+              <option value="info">Info</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="description" class="col-sm-2 control-label">Description</label>
+          <div class="col-sm-10">
+            <textarea type="text" name="description" rows="15" id="description" placeholder="" class="form-control" >{{description}}</textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="submit btn btn-large btn-default">Submit</button>
+          </div>
+        </div>
+      </form>
+  </div>
+</template>
