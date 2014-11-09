@@ -20,7 +20,7 @@ Template.NomineeProfile.events({
     comment.competition = this.competition;
     comment.commenter_id = Meteor.userId();
     comment.comment = text;
-    comment.commenter_name = Meteor.user().fullName();
+    comment.commenter_name = Meteor.user().emails[0].address.split('@')[0];
     comment.save();
 
     document.getElementById("currComment").value = '';

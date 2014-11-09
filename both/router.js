@@ -14,7 +14,7 @@ Router.route('/nominee/:id', function() {
 
   if(this.ready()) {
     var nominee = Nominees.findOne(id);
-    nominee.comments = Comments.find({nominee_id: id});
+    nominee.comments = Comments.find({nominee_id: id}, {sort: {created_at: -1}});
     this.render('NomineeProfile', {data: nominee});
   } else
     this.render('loading');

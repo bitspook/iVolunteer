@@ -1,7 +1,6 @@
 /**
  * Attrubutes:
  *
- * *
  */
 
 User = Model(Meteor.users);

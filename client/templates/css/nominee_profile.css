@@ -24,3 +24,8 @@
 .bigger-font-2 {
 	font-size: 30px;
 }
+
+.dcomment .dpic {
+  padding-top: 5px;
+  text-align: center;
+}
