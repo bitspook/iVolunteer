@@ -5,14 +5,28 @@
       width: 70% !important;
       float: left;
     }
-    .container {
-    }
 
     .buttons {
       margin-bottom: 20px;
       float: left;
       width: 100%;
     }
+    path.slice{
+      stroke-width:2px;
+    }
+
+    polyline{
+      opacity: .3;
+      stroke: black;
+      stroke-width: 2px;
+      fill: none;
+    }
+
+    svg text.percent{
+      fill:white;
+      text-anchor:middle;
+      font-size:12px;
+
     .btn-warning {
       color: #fff;
       background-color: #9baa11 !important;
@@ -25,6 +39,7 @@
       <a href="/new/nominees/ngo" class="btn btn-warning" role="button">NGO</a>
       <a href="/new/nominees/corporate" class="btn btn-warning" role="button">Corporate</a>
       <a href="/new/nominees/volunteer" class="btn btn-warning" role="button">Volunteer</a>
+      <a href="/add-notice" class="btn btn-warning" role="button">Notice</a>
     </div>
     <table class="table table-striped">
       <thead>
@@ -38,7 +53,7 @@
       </thead>
       <tbody>
         {{#each nominees}}
-          <tr class="nominee">
+          <tr class="nominee" data-id={{_id}}>
             <td>{{type}}</td>
             <td>{{first_name}}</td>
             <td>{{vote_count}}</td>
@@ -51,8 +66,11 @@
         {{/each}}
       </tbody>
     </table>
-    <div class="chart">
-    </div>
+    <svg width="300px" height="300px" class="pull-right">
+      <g id="d3-chart">
+      </g>
+      <g id="legends"></g>
+    </svg>
   </div>
 </template>
 

@@ -46,6 +46,10 @@ Router.route('/add-nominee', function() {
   this.render('AddNominee');
 });
 
+Router.route('/add-notice', function() {
+  this.render('AddNotice');
+});
+
 Router.route('/login', function() {
   var data = {};
 
