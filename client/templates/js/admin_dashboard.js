@@ -1,8 +1,14 @@
 Template.AdminDashboard.helpers({
-  // votes: function() {
-  //   Meteor.subscribe('vote_counts_for_nominee', this.id);
-  // }
+  disableMe: function() {
+
+    return Session.get('snCount') >= 10  ? 'disabled' : false;
+  }
 });
+
+Template.AdminDashboard.rendered = function() {
+  var selectedCount = Nominees.find({selected: true}).count();
+  Session.set('snCount', selectedCount);
+};
 
 Template.AdminDashboard.events({
   'click .remove': function(event, template) {
@@ -51,5 +57,11 @@ Template.AdminDashboard.events({
         });
       }
     }
+  },
+  'change .selected-nominee': function(event, template) {
+    event.preventDefault();
+
+    var el = $(event.currentTarget).data('id');
+    Nominees.findOne(el).toggleSelect();
   }
 });

@@ -65,7 +65,7 @@
             <a class="remove" data-id="{{_id}}" href="#" >delete</a>
           </td>
           <td class="select">
-            <input checked={{isSelected}} type="checkbox" />
+            <input class="selected-nominee" data-id={{_id}} checked={{isSelected}} disabled={{disableMe}} type="checkbox" />
           </td>
         </tr>
         {{/each}}
