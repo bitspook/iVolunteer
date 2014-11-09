@@ -54,11 +54,9 @@
 }
  </style>
   <div class="container">
-    
     {{#each notices}}
       {{> NoticeMessage}}
     {{/each}}
-    
     <div class="row">
 
       <div class="col-sm-3 blog-sidebar">
@@ -77,8 +75,9 @@
           {{#each nominees}}
           <!-- <p>Hi there</p> -->
           <div class="col-md-4 tile">
-            <div class="iv_images" style="background-image:url('{{image}}')">
-            </div>
+            <a href="/nominee/{{_id}}">
+              <div class="iv_images" style="background-image:url('{{image}}')" ></div>
+            </a>
 
             <div class="wrapper_card">
               <h2 class="demo-title"><a href="/nominee/{{_id}}">{{first_name}}</a></h2>

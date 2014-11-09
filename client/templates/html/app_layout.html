@@ -8,13 +8,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/"><img src="/images/ivolLogo.png" title="ivolunteer" /></a>
+          <a class="navbar-brand" href="/nominees/all"><img src="/images/ivolLogo.png" title="ivolunteer" /></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li>
               {{#if currentUser}}
                 <a class="logout" href="/logout">logout</a>
+              {{else}}
+                <a class="logout" href="/login">Sign In</a>
               {{/if}}
             </li>
             <!-- <li class="active"><a href="#">Home</a></li> -->

@@ -44,4 +44,4 @@ Template.AdminDashboard.events({
       });
     }
   }
-})
+});

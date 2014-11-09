@@ -48,7 +48,7 @@
 	}
 
 	function getValue(d) {
-		return d.data.label + ' ' + d.value;
+		return d.value + ' ' + d.data.label;
 	}
 
 	function getLabel(d) {
