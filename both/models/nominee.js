@@ -45,16 +45,16 @@ Nominee.extend({
   websiteURL: function () {
     return "www.xyz.com";
   },
-  isSelectable: function() {
-    var topVoted = Nominees.find({}, {sort: {vote_count: 5}});
-    // car topIds = _.pluck(topVoted, '_id')
-    console.log('topVoted', topVoted);
-    return true;
-    // return _.contains(top5Ids, this._id);
+  isSelected: function() {
+    var topVotedIds = Nominee.topVoted().map(function(doc) {
+      return doc._id;
+    });
+
+    return _.contains(topVotedIds, this._id);
   }
 });
 
 Nominee.topVoted = function() {
-  var topVoted = Nominees.find({}, {sort: {vote_count: 5}});
+  var topVoted = Nominees.find({}, {sort: {vote_count: -1}, limit: 5});
   return topVoted;
 };
