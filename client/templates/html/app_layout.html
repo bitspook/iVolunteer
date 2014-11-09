@@ -1,27 +1,36 @@
 <template name="AppLayout">
   <nav class="navbar navbar-inverse" role="navigation">
     <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/nominees/all"><img src="/images/ivolLogo.png" title="ivolunteer" /></a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li>
-              {{#if currentUser}}
-                <a class="logout" href="/logout">logout</a>
-              {{else}}
-                <a class="logout" href="/login">Sign In</a>
-              {{/if}}
-            </li>
-            <!-- <li class="active"><a href="#">Home</a></li> -->
-          </ul>
-        </div><!--/.nav-collapse -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/nominees/all"><img src="/images/ivolLogo.png" title="ivolunteer" /></a>
+
+        <ul class="nav navbar-nav">
+          <li>
+            {{#if currentUser.isAdmin}}
+            <a class="logout {{activeRoute '/admin'}}" href="/admin">Dashboard</a>
+            {{/if}}
+          </li>
+          <!-- <li class="active"><a href="#">Home</a></li> -->
+        </ul>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            {{#if currentUser}}
+            <a class="logout" href="/logout">Logout</a>
+            {{else}}
+            <a class="logout {{activeRoute '/login'}}" href="/login">Sign In</a>
+            {{/if}}
+          </li>
+          <!-- <li class="active"><a href="#">Home</a></li> -->
+        </ul>
+      </div><!--/.nav-collapse -->
     </div>
   </nav>
 

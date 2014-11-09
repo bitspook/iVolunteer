@@ -68,3 +68,7 @@
  h3 {
     text-align: center;
   }
+
+ .active {
+   color: #E22331 !important;
+ }
