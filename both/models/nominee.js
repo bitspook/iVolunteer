@@ -15,6 +15,7 @@
  * * location                                   String
  * * profession                                 String
  * * description                                String
+ * *
  */
 
 Nominees = new Mongo.Collection('nominees');
@@ -43,10 +44,17 @@ Nominee.extend({
   },
   websiteURL: function () {
     return "www.xyz.com";
+  },
+  isSelectable: function() {
+    var topVoted = Nominees.find({}, {sort: {vote_count: 5}});
+    // car topIds = _.pluck(topVoted, '_id')
+    console.log('topVoted', topVoted);
+    return true;
+    // return _.contains(top5Ids, this._id);
   }
 });
 
 Nominee.topVoted = function() {
-  var topVoted = Nominees.find({}, {sort: {vote_count: 1}});
+  var topVoted = Nominees.find({}, {sort: {vote_count: 5}});
   return topVoted;
 };
