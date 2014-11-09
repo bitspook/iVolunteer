@@ -18,7 +18,7 @@ Template.AdminDashboard.events({
         nominee.remove();
     },
 
-    'click .nominee': function(event, template) {
+    'mouseover .nominee': function(event, template) {
         event.preventDefault();
 
         var id = $(event.currentTarget).data('id');

@@ -12,6 +12,7 @@
 .navbar-inverse .navbar-brand {
 	color: #e12230 !important;
 }
+
 .logout {
 	color: #fff !important;
 	float: right;
@@ -22,6 +23,10 @@
 .list-unstyled li {
 	margin-bottom: 5px !important;
 	font-size: 15px;
+}
+
+#navbar {
+	width: 120px;
 }
 
 .navbar-brand {
