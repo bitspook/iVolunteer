@@ -1,3 +1,12 @@
+Template.NomineeProfile.rendered = function () {
+  var goto = location.href.indexOf('?') > 0 && location.href.split('?')[1].split('=')[1];
+  if(!goto) return;
+
+  $('html, body').animate({
+          scrollTop: $("#comments-row").offset().top
+  }, 600);
+};
+
 Template.NomineeProfile.events({
   "submit #comment-form": function(e) {
     e.preventDefault();
