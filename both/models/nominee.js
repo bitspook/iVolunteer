@@ -45,3 +45,8 @@ Nominee.extend({
     return "www.xyz.com";
   }
 });
+
+Nominee.topVoted = function() {
+  var topVoted = Nominees.find({}, {sort: {vote_count: 1}});
+  return topVoted;
+};
