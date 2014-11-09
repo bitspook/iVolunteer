@@ -24,7 +24,6 @@ Template.corporate.events({
         corporate.type = 'corporate';
         corporate.owner_id = Meteor.userId();
         console.log('corporate', corporate);
-        debugger;
         corporate.save();
         Router.go('admin');
     }

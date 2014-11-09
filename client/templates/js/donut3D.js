@@ -1,13 +1,13 @@
 !function(){
 	var Donut3D={};
-	
+
 	function pieTop(d, rx, ry, ir ){
 		if(d.endAngle - d.startAngle == 0 ) return "M 0 0";
 		var sx = rx*Math.cos(d.startAngle),
 			sy = ry*Math.sin(d.startAngle),
 			ex = rx*Math.cos(d.endAngle),
 			ey = ry*Math.sin(d.endAngle);
-			
+
 		var ret =[];
 		ret.push("M",sx,sy,"A",rx,ry,"0",(d.endAngle-d.startAngle > Math.PI? 1: 0),"1",ex,ey,"L",ir*ex,ir*ey);
 		ret.push("A",ir*rx,ir*ry,"0",(d.endAngle-d.startAngle > Math.PI? 1: 0), "0",ir*sx,ir*sy,"z");
@@ -17,7 +17,7 @@
 	function pieOuter(d, rx, ry, h ){
 		var startAngle = (d.startAngle > Math.PI ? Math.PI : d.startAngle);
 		var endAngle = (d.endAngle > Math.PI ? Math.PI : d.endAngle);
-		
+
 		var sx = rx*Math.cos(startAngle),
 			sy = ry*Math.sin(startAngle),
 			ex = rx*Math.cos(endAngle),
@@ -43,7 +43,7 @@
 	}
 
 	function getPercent(d){
-		return (d.endAngle-d.startAngle > 0.2 ? 
+		return (d.endAngle-d.startAngle > 0.2 ?
 				Math.round(1000*(d.endAngle-d.startAngle)/(Math.PI*2))/10+'%' : '');
 	}
 
@@ -97,10 +97,10 @@
 			.transition().duration(750).attrTween("d", arcTweenOuter);
 
 		d3.select("#"+id).selectAll(".percent").data(_data).transition().duration(750)
-			.attrTween("x",textTweenX).attrTween("y",textTweenY).text(getPercent); 	
+			.attrTween("x",textTweenX).attrTween("y",textTweenY).text(getPercent);
 	}
 
-	Donut3D.draw=function(id, data, x /*center x*/, y/*center y*/, 
+	Donut3D.draw=function(id, data, x /*center x*/, y/*center y*/,
 			rx/*radius x*/, ry/*radius y*/, h/*height*/, ir/*inner radius*/){
 
 		var _data = d3.layout.pie().sort(null).value(function(d) { if (d.value == 0) { return d.value + 1; } return d.value; })(data);

@@ -14,6 +14,13 @@ Template.AdminDashboard.events({
     nominee.remove();
   },
 
+  'click .edit': function(event, template) {
+    event.preventDefault();
+    var url = event.target.href.replace(/.*\/\/[^\/]*/, '');
+    // console.log('url', url);
+    Router.go(url);
+  },
+
   'click .nominee': function(event, template) {
     event.preventDefault();
     var id = $(event.currentTarget).data('id');
@@ -23,7 +30,7 @@ Template.AdminDashboard.events({
     var nominee = Nominees.findOne(id);
     var allVotes = Votes.find({nominee_id: id});
 
-    var votes =  {
+    var votes = {
       calls: Votes.find({nominee_id: id, source: 'calls'}).count(),
       sms: Votes.find({nominee_id: id, source: 'sms'}).count(),
       web: Votes.find({nominee_id: id, source: 'web'}).count()
